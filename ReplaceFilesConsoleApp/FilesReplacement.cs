@@ -38,15 +38,12 @@ namespace ReplaceFilesConsoleApp
 			return fileNames.ToArray();
 		}
 
-		public DateTime GetLastModifiedDateTime(string filePath)
-		{
-			var fi = new FileInfo(filePath);
-			return fi.LastWriteTime;
-		}
-
 		public DateTime Replace(string sourceFilePath, string destFilePath)
 		{
-			return DateTime.MinValue;
+			var sourceFileInfo = new FileInfo(sourceFilePath);
+
+			return sourceFileInfo.CopyTo(destFilePath, true)
+				.LastAccessTime;
 		}
 	}
 }
