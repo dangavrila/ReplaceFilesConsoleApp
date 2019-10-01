@@ -44,9 +44,9 @@ namespace ReplaceFilesConsoleApp
 			return fi.LastWriteTime;
 		}
 
-		public bool Replace(string sourceFilePath, string destFilePath)
+		public DateTime Replace(string sourceFilePath, string destFilePath)
 		{
-			return false;
+			return DateTime.MinValue;
 		}
 	}
 }

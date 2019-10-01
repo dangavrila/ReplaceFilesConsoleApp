@@ -16,8 +16,8 @@ namespace ReplaceFilesConsoleApp.Test
 			_filesReplacement = new FilesReplacement();
 
 			destFolder =
-				@"DestFolder";
-			sourceFolder = @"SourceFolder";
+				@"C:\Projects\TestFiles\Destination";
+			sourceFolder = @"C:\Projects\TestFiles\Source";
 
 			maxTimeSpanBetweenReplacements = new TimeSpan(0, 15, 0);
 		}
@@ -50,10 +50,9 @@ namespace ReplaceFilesConsoleApp.Test
 			for (int i = 0; i < destFilePaths.Length; i++)
 			{
 				// Act
-				bool replaced = _filesReplacement.Replace(sourceFilePaths[i], destFilePaths[i]);
+				DateTime lastModifiedDate = _filesReplacement.Replace(sourceFilePaths[i], destFilePaths[i]);
 
 				// Assert
-				DateTime lastModifiedDate = _filesReplacement.GetLastModifiedDateTime(destFilePaths[i]);
 				Assert.AreEqual(DateTime.Now.Date, lastModifiedDate.Date);
 				Assert.LessOrEqual(lastModifiedDate.Minute, maxTimeSpanBetweenReplacements.Minutes);
 			}

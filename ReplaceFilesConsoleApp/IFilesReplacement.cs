@@ -8,7 +8,6 @@ namespace ReplaceFilesConsoleApp
 	{
 		string[] GetFileNames(string location);
 		string[] GetFilesFromSource(string sourceFolder, string[] fileNamesAtDest);
-		DateTime GetLastModifiedDateTime(string filePath);
-		bool Replace(string sourceFilePath, string destFilePath);
+		DateTime Replace(string sourceFilePath, string destFilePath);
 	}
 }
